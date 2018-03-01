@@ -1,0 +1,27 @@
+       Mutex sip = new Mutex(false, "SINGLE_INSTANCE_APP_MUTEX");
+                if (sip.WaitOne(0, false) == false)
+                {
+                    sip.Close();
+                    sip.Dispose();
+                    sip = null;
+
+                    MessageBox.Show("Uygulama Açık");
+                    Application.Exit();
+                }
+                
+                
+                            List<string> listBox1 = new List<string>();
+
+                Process[] Memory = Process.GetProcesses();
+
+                int count = 0;
+                foreach (Process prc in Memory)
+                {
+                    if (prc.ProcessName.Contains("UygulamaEXEAdi"))
+                    {
+                        count++;
+
+                    }
+
+                }
+                
